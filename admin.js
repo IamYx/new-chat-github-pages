@@ -49,7 +49,7 @@
       params.set('pushUrl', pushUrl.value.trim());
     }
 
-    const livePath = location.pathname.replace(/admin\.(html|txt)$/, 'live.txt');
+    const livePath = location.pathname.replace(/admin\.(html|txt)$/, 'index.html');
     const url = `${location.origin}${livePath}?v=13#/play?${params.toString()}`;
     resultUrl.value = url;
     openLink.href = url;
