@@ -573,6 +573,7 @@
     const messages = rawMessages.slice().reverse();
     clearComments();
     messages.forEach((msg) => appendHistoryMessage(msg));
+    scrollCommentsToBottom();
     setStatus(`已进入聊天室 ${state.chatroomId}，已加载最近 ${messages.length} 条消息`);
   }
 
@@ -617,6 +618,7 @@
   }
 
   function appendComment(message) {
+    const shouldStickToBottom = isCommentStreamNearBottom();
     const item = document.createElement('div');
     item.className = `comment-item${message.mine ? ' mine' : ''}`;
 
@@ -630,9 +632,22 @@
     item.append(name, text);
     dom.commentStream.appendChild(item);
 
-    while (dom.commentStream.children.length > 7) {
+    while (dom.commentStream.children.length > 200) {
       dom.commentStream.removeChild(dom.commentStream.firstChild);
     }
+
+    if (shouldStickToBottom || message.mine) {
+      scrollCommentsToBottom();
+    }
+  }
+
+  function isCommentStreamNearBottom() {
+    const gap = dom.commentStream.scrollHeight - dom.commentStream.scrollTop - dom.commentStream.clientHeight;
+    return gap < 48;
+  }
+
+  function scrollCommentsToBottom() {
+    dom.commentStream.scrollTop = dom.commentStream.scrollHeight;
   }
 
   function nowTime() {

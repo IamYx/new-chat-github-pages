@@ -259,13 +259,21 @@ h1 {
   right: 72px;
   bottom: calc(74px + env(safe-area-inset-bottom));
   z-index: 3;
-  max-height: 34vh;
-  overflow: hidden;
+  max-height: min(42vh, 360px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   gap: 8px;
-  pointer-events: none;
+  padding: 4px 8px 4px 0;
+  pointer-events: auto;
+  scrollbar-width: none;
+  touch-action: pan-y;
+}
+
+.comment-stream::-webkit-scrollbar {
+  display: none;
 }
 
 .comment-item {
