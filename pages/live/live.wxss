@@ -1,0 +1,22 @@
+.pusher {
+  width: 100%;
+  height: 640rpx;
+}
+
+.controls {
+  margin-top: 24rpx;
+}
+
+.button-row {
+  display: flex;
+  gap: 14rpx;
+  margin-bottom: 16rpx;
+}
+
+.action {
+  flex: 1;
+}
+
+.small-action {
+  width: 156rpx;
+}

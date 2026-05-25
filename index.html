@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>123</title>
+    <meta name="description" content="456" />
+    <meta itemprop="name" content="123" />
+    <meta itemprop="description" content="456" />
+    <meta itemprop="image" content="https://yx-web-nosdn.netease.im/common/269143b5e0f080a7c1d157cce6073501/web%E4%BD%93%E9%AA%8C%E9%A6%86.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="123" />
+    <meta property="og:description" content="456" />
+    <meta property="og:image" content="https://yx-web-nosdn.netease.im/common/269143b5e0f080a7c1d157cce6073501/web%E4%BD%93%E9%AA%8C%E9%A6%86.png" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="123" />
+    <meta property="twitter:description" content="456" />
+    <meta property="twitter:image" content="https://yx-web-nosdn.netease.im/common/269143b5e0f080a7c1d157cce6073501/web%E4%BD%93%E9%AA%8C%E9%A6%86.png" />
+    <link rel="stylesheet" href="./styles.css?v=3" />
+  </head>
+  <body>
+    <main class="live-page">
+      <section class="video-stage" aria-label="直播画面">
+        <video id="playVideo" class="live-video" playsinline webkit-playsinline controls></video>
+
+        <div id="posterLayer" class="poster-layer">
+          <div class="pulse-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <p id="posterText">准备连接直播</p>
+          <button id="posterPlayBtn" class="primary-btn" type="button">开始播放</button>
+        </div>
+
+        <header class="top-overlay">
+          <div class="live-meta">
+            <img id="liveAvatar" class="live-avatar hidden" alt="" />
+            <div>
+              <h1 id="liveTitle">直播间</h1>
+              <p id="roomText">房间 demo-room</p>
+              <p id="liveDesc" class="live-desc"></p>
+            </div>
+          </div>
+          <div class="top-actions">
+            <span id="onlineCountText" class="online-count">在线 --</span>
+            <button id="settingsBtn" class="icon-btn" type="button" aria-label="设置">设置</button>
+          </div>
+        </header>
+
+        <div id="commentStream" class="comment-stream" aria-live="polite"></div>
+
+        <form id="commentForm" class="comment-form">
+          <input id="commentInput" type="text" placeholder="说点什么..." autocomplete="off" />
+          <button class="send-btn" type="submit">发送</button>
+        </form>
+
+        <button id="loginEntryBtn" class="login-entry" type="button">登录后评论</button>
+      </section>
+
+      <aside id="settingsPanel" class="settings-panel" aria-hidden="true" hidden>
+        <div class="sheet">
+          <div class="sheet-head">
+            <h2>直播设置</h2>
+            <button id="closeSettingsBtn" class="icon-btn dark" type="button" aria-label="关闭">关闭</button>
+          </div>
+
+          <label>
+            <span>直播标题</span>
+            <input id="titleInput" type="text" placeholder="直播间" />
+          </label>
+
+          <label>
+            <span>直播内容</span>
+            <input id="descInput" type="text" placeholder="直播简介" />
+          </label>
+
+          <label>
+            <span>直播头像地址</span>
+            <input id="avatarInput" type="text" placeholder="https://...png" />
+          </label>
+
+          <label>
+            <span>房间号</span>
+            <input id="roomInput" type="text" placeholder="demo-room" />
+          </label>
+
+          <label>
+            <span>拉流播放地址</span>
+            <input id="pullUrlInput" type="text" placeholder="https://...m3u8" />
+          </label>
+
+          <label>
+            <span>聊天室 ID</span>
+            <input id="chatroomIdInput" type="text" placeholder="请输入云信聊天室 ID" />
+          </label>
+
+          <div class="sheet-actions">
+            <button id="applySettingsBtn" class="primary-btn" type="button">保存并播放</button>
+            <button id="connectChatBtn" class="plain-btn" type="button">连接评论</button>
+          </div>
+
+          <p id="statusText" class="status-text">H5 播放建议使用 .m3u8 地址；评论会发送到云信聊天室。</p>
+        </div>
+      </aside>
+
+      <aside id="loginPanel" class="settings-panel" aria-hidden="true" hidden>
+        <div class="sheet">
+          <div class="sheet-head">
+            <h2>云信账号登录</h2>
+            <button id="closeLoginBtn" class="icon-btn dark" type="button" aria-label="关闭">关闭</button>
+          </div>
+
+          <label>
+            <span>手机号或账号</span>
+            <input id="accountInput" type="text" placeholder="请输入已注册的云信账号" />
+          </label>
+
+          <p id="loginErrorText" class="error-text"></p>
+
+          <div class="sheet-actions">
+            <button id="loginBtn" class="primary-btn" type="button">登录</button>
+          </div>
+
+          <p id="loginStatusText" class="status-text">请先在云信控制台注册账号，token 统一使用 123456。</p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@yxim/nim-web-sdk@9.21.12/dist/SDK/NIM_Web_SDK.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flv.js@1"></script>
+    <script src="./app-h5.js?v=13"></script>
+  </body>
+</html>

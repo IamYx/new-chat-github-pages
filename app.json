@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/live/live",
+    "pages/play/play"
+  ],
+  "window": {
+    "navigationBarTitleText": "小直播",
+    "navigationBarBackgroundColor": "#101828",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f7fb"
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "直播端需要使用摄像头采集画面"
+    },
+    "scope.record": {
+      "desc": "直播端需要使用麦克风采集声音"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

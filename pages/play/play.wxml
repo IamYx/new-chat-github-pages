@@ -1,0 +1,62 @@
+<view class="page">
+  <view class="screen">
+    <live-player
+      id="livePlayer"
+      class="player"
+      src="{{pullUrl}}"
+      mode="RTC"
+      autoplay="{{false}}"
+      orientation="vertical"
+      object-fit="contain"
+      bindstatechange="onPlayerState"
+      binderror="onPlayerError"
+    />
+  </view>
+
+  <view class="controls">
+    <view class="field">
+      <text class="label">拉流地址</text>
+      <input class="input" value="{{pullUrl}}" placeholder="rtmp://、flv:// 或 webrtc:// 播放地址" bindinput="onPullUrlInput" />
+    </view>
+
+    <view class="field">
+      <text class="label">房间号</text>
+      <input class="input" value="{{roomId}}" placeholder="聊天室房间号" bindinput="onRoomInput" />
+    </view>
+
+    <view class="field">
+      <text class="label">聊天室地址</text>
+      <input class="input" value="{{wsUrl}}" placeholder="ws://127.0.0.1:8787" bindinput="onWsInput" />
+    </view>
+
+    <view class="button-row">
+      <button class="primary-btn action" wx:if="{{!playing}}" bindtap="startPlay">开始播放</button>
+      <button class="danger-btn action" wx:else bindtap="stopPlay">停止播放</button>
+      <button class="ghost-btn small-action" bindtap="toggleMute">{{muted ? '开声' : '静音'}}</button>
+    </view>
+
+    <text class="status">{{statusText}}</text>
+  </view>
+
+  <view class="chat">
+    <view class="chat-head">
+      <text class="chat-title">观看聊天</text>
+      <text class="chat-state">{{chatStatus}}</text>
+    </view>
+    <scroll-view class="messages" scroll-y scroll-into-view="{{lastMessageId}}">
+      <view
+        wx:for="{{messages}}"
+        wx:key="id"
+        id="msg-{{item.id}}"
+        class="message {{item.mine ? 'mine' : ''}}"
+      >
+        <view class="message-meta">{{item.userName}} · {{item.time}}</view>
+        <view class="message-text">{{item.text}}</view>
+      </view>
+    </scroll-view>
+    <view class="chat-bar">
+      <input class="chat-input" value="{{draft}}" placeholder="输入聊天内容" confirm-type="send" bindinput="onDraftInput" bindconfirm="sendMessage" />
+      <button class="send-btn" bindtap="sendMessage">发送</button>
+    </view>
+  </view>
+</view>

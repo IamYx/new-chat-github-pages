@@ -1,0 +1,18 @@
+<view class="page home">
+  <view class="hero">
+    <text class="title">小直播</text>
+    <text class="subtitle">选择直播端推流，或进入播放端拉流观看并聊天。</text>
+  </view>
+
+  <view class="entry-list">
+    <button class="entry live-entry" bindtap="goLive">
+      <text class="entry-title">直播端</text>
+      <text class="entry-desc">打开摄像头和麦克风开始直播</text>
+    </button>
+
+    <button class="entry play-entry" bindtap="goPlay">
+      <text class="entry-title">播放端</text>
+      <text class="entry-desc">输入拉流地址观看直播</text>
+    </button>
+  </view>
+</view>

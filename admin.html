@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>直播管理后台</title>
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <main class="admin-page">
+      <section class="admin-shell">
+        <header class="admin-head">
+          <h1>直播管理后台</h1>
+          <p>填写直播信息，生成可分享的 H5 观看页链接。</p>
+        </header>
+
+        <form id="liveForm" class="admin-form">
+          <label>
+            <span>直播头像</span>
+            <input id="avatarFile" type="file" accept="image/*" />
+          </label>
+
+          <label>
+            <span>或填写头像 URL</span>
+            <input id="avatarUrl" type="url" placeholder="https://...png" />
+          </label>
+
+          <label>
+            <span>标题</span>
+            <input id="title" type="text" placeholder="请输入直播标题" required />
+          </label>
+
+          <label>
+            <span>内容</span>
+            <textarea id="content" rows="3" placeholder="请输入直播简介"></textarea>
+          </label>
+
+          <label>
+            <span>聊天室 ID</span>
+            <input id="chatroomId" type="text" placeholder="请输入云信聊天室 ID" required />
+          </label>
+
+          <label>
+            <span>直播推流地址</span>
+            <input id="pushUrl" type="text" placeholder="rtmp://... 或 webrtc://..." />
+          </label>
+
+          <label>
+            <span>拉流播放地址</span>
+            <input id="pullUrl" type="url" placeholder="https://...m3u8" required />
+          </label>
+
+          <button class="primary" type="submit">生成直播页面</button>
+        </form>
+
+        <section id="resultPanel" class="result-panel hidden">
+          <h2>生成结果</h2>
+          <div class="preview">
+            <img id="previewAvatar" alt="" />
+            <div>
+              <strong id="previewTitle"></strong>
+              <p id="previewContent"></p>
+            </div>
+          </div>
+          <textarea id="resultUrl" rows="5" readonly></textarea>
+          <div class="result-actions">
+            <button id="copyBtn" class="primary" type="button">复制链接</button>
+            <a id="openLink" class="ghost" target="_blank" rel="noreferrer">打开观看页</a>
+          </div>
+          <p class="hint">当前静态版本会把信息放在链接参数里；真实图片上传建议后续接对象存储。</p>
+        </section>
+      </section>
+    </main>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>
